@@ -1,0 +1,19 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -432,6 +432,7 @@
+ if(WXWIDGETS_FORCE_VERSION)
+   set (wxWidgets_CONFIG_OPTIONS --version=${WXWIDGETS_FORCE_VERSION})
+ endif()
++find_file(_wx_filename wx/version.h PATHS ${wxWidgets_INCLUDE_DIRS})
+ FIND_PACKAGE(wxWidgets REQUIRED COMPONENTS ${wxWidgets_FIND_COMPONENTS})
+
+ IF(MSYS)
+@@ -1218,6 +1219,7 @@
+ #  Search for wxWidgets 2.9 or newer
+ STRING(REGEX MATCHALL "-2.9|-3." wx_Version_2.9+ "${wxWidgets_INCLUDE_DIRS}")
+ IF(wx_Version_2.9+)
++message ( "${wxWidgets_INCLUDE_DIRS} includes")
+ ELSE(wx_Version_2.9+)
+ #  SET(HDRS ${HDRS} include/scrollingdialog.h )
+ #  SET(SRCS ${SRCS} src/scrollingdialog.cpp)
+
